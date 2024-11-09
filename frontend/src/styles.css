@@ -1,0 +1,187 @@
+body {
+    font-family: 'Times New Roman', serif;
+    background-color: #faf3e0;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+    color: #2c3e50;
+}
+
+.dashboard-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fffaf0;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #8b4513;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: 'Times New Roman', serif;
+}
+
+button:hover {
+    background-color: #5a3310;
+}
+
+/* Login Window */
+.login-container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    background: #f0e5d8;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border: 2px solid #8b4513;
+}
+
+.login-container h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #6b4226;
+}
+
+.login-container .form-group {
+    margin-bottom: 15px;
+}
+
+.login-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #6b4226;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    width: 50%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #8b4513;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+}
+
+/* Tenant Dashboard */
+.tenant-dashboard {
+    background: #fffaf0;
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 25px;
+    border-radius: 8px;
+    border: 2px solid #8b4513;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.tenant-dashboard ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.tenant-dashboard li {
+    padding: 15px;
+    border-bottom: 1px solid #8b4513;
+    font-weight: bold;
+}
+
+/* Staff Dashboard */
+.staff-dashboard {
+    background: #e9f1f7;
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 25px;
+    border-radius: 8px;
+    border: 2px solid #3b6978;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.staff-dashboard ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.staff-dashboard li {
+    padding: 15px;
+    border-bottom: 1px solid #3b6978;
+    color: #2f4858;
+    font-weight: bold;
+}
+
+.staff-dashboard button {
+    background-color: #2f4858;
+}
+
+.staff-dashboard button:hover {
+    background-color: #1f2e3c;
+}
+
+/* Manager Dashboard */
+.manager-dashboard {
+    background: #fffaf0;
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 8px;
+    border: 3px solid #d2691e;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+}
+
+.manager-dashboard ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.manager-dashboard li {
+    padding: 15px;
+    border-bottom: 1px solid #d2691e;
+    color: #8b4513;
+    font-weight: bold;
+}
+
+.manager-dashboard button {
+    background-color: #8b4513;
+    margin: 5px;
+}
+
+.manager-dashboard button:hover {
+    background-color: #5a3310;
+}
+
+/* Form Styles for Dashboards */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form {
+    margin-bottom: 30px;
+}
