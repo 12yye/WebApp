@@ -1,116 +1,162 @@
 # Maintenance Request Management System
 
-## Overview
-This is a web-based Maintenance Request Management System for an apartment rental business. The system is designed to facilitate efficient communication between tenants, maintenance staff, and managers. It provides functionality for tenants to submit maintenance requests, managers to monitor and manage tenant accounts, and staff to handle assigned maintenance tasks. The entire application is built using a Node.js backend, SQLite for data storage, and React for the frontend.
+This is a full-stack web application that helps property managers manage maintenance requests from tenants in an apartment rental business. It includes functionalities for tenants to submit requests, maintenance staff to update statuses, and managers to view and manage all maintenance activities.
 
 ## Features
-- **Tenant Features**:
-  - Submit maintenance requests with details such as area, description, and optional photos.
-  - View the history of submitted maintenance requests, along with status and priority.
 
-- **Manager Features**:
-  - Add and manage tenant records.
-  - Update the status, priority, and comments for maintenance requests.
-  - Delete maintenance requests when necessary.
-
-- **Staff Features**:
-  - View all maintenance requests.
-  - Update the status and comments of assigned maintenance tasks.
+- **Tenant Dashboard**: Submit maintenance requests, view the request history.
+- **Manager Dashboard**: Add new tenants, delete tenants, update request status, and prioritize maintenance requests.
+- **Staff Dashboard**: View and update maintenance requests.
 
 ## Technologies Used
-- **Backend**: Node.js with Express.js for building the RESTful API.
-- **Database**: SQLite for data persistence.
-- **Frontend**: React.js for building the user interface.
-- **Other Libraries**:
-  - **Axios** for HTTP requests between the frontend and backend.
-  - **cors** for handling cross-origin requests.
-  - **sqlite3** for interacting with the SQLite database.
+
+- **Frontend**: React (JavaScript)
+- **Backend**: Node.js, Express.js
+- **Database**: SQLite
+
+## Prerequisites
+
+Before running the application, ensure you have the following installed on your system:
+
+1. **Node.js & npm**: Required to run the backend server and frontend.
+   - [Node.js download link](https://nodejs.org/en/download/)
+2. **SQLite3**: Used for the database. The `sqlite3` library is required to interact with the SQLite database.
+3. **React**: The frontend is built using React. You'll need to install React dependencies to get the frontend running.
+4. **Axios**: Used for making API requests from the frontend.
+5. **CORS**: Required to handle cross-origin requests.
+6. **Express.js**: Used to create the backend server and handle routing.
 
 ## Installation Instructions
-Follow the steps below to run the project locally.
 
-### Prerequisites
-- Node.js and npm installed.
-- SQLite installed (optional but helpful for local database management).
+### Backend Setup
 
-### Setup Steps
-1. **Clone the Repository**:
-    ```bash
-    git clone <repository-url>
-    cd Maintenance-Request-Management-System
-    ```
+1. **Clone the repository**
+   ```sh
+   git clone <repository-url>
+   cd <repository-folder>/backend
+   ```
 
-2. **Install Dependencies**:
-    Navigate to both the backend and frontend directories and install the required packages:
-    ```bash
-    # Backend
-    cd backend
-    npm install
+2. **Install Dependencies**
+   ```sh
+   npm install
+   ```
 
-    # Frontend
-    cd ../frontend
-    npm install
-    ```
+   This will install all the necessary packages, including Express.js, SQLite3, and CORS.
 
-3. **Database Initialization**:
-    Initialize the SQLite database by running the `init_db.js` script from the backend directory:
-    ```bash
-    node init_db.js
-    ```
+3. **Initialize the Database**
+   Run the following command to create and initialize the SQLite database with the necessary tables:
+   ```sh
+   node init_db.js
+   ```
 
-4. **Run the Backend**:
-    Start the backend server from the `backend` directory:
-    ```bash
-    npm start
-    ```
-    The backend will run on port `5001`.
+4. **Start the Backend Server**
+   ```sh
+   node server.js
+   ```
 
-5. **Run the Frontend**:
-    Start the frontend server from the `frontend` directory:
-    ```bash
-    npm start
-    ```
-    The frontend will run on port `3000`.
+   The server will run on `http://localhost:5001` by default.
 
-6. **Access the Application**:
-    Open a web browser and navigate to `http://localhost:3000`.
+### Frontend Setup
+
+1. **Navigate to the Frontend Directory**
+   ```sh
+   cd ../frontend
+   ```
+
+2. **Install React and Other Dependencies**
+   ```sh
+   npx create-react-app .
+   npm install axios
+   ```
+
+   This will set up the React environment and install the Axios library to handle API requests.
+
+3. **Start the Frontend Application**
+   ```sh
+   npm start
+   ```
+
+   This will start the React development server, which should run on `http://localhost:3000` by default.
+
+### Install Additional Packages (Both Backend and Frontend)
+
+In addition to the basic setup, you need to install the following packages for the complete functionality:
+
+- **Backend**:
+  ```sh
+  npm install express cors sqlite3
+  ```
+
+- **Frontend**:
+  ```sh
+  npm install axios react-router-dom
+  ```
+
+These packages ensure that your application can handle routing, database operations, and cross-origin requests properly.
 
 ## Project Structure
-The project is split into two main parts:
-- **Backend (Node.js + Express)**: Located in the `backend` folder.
-  - **server.js**: Sets up the Express server, initializes the database, and defines the routes.
-  - **routes/**: Contains route handlers for tenants, maintenance requests, and other features.
-- **Frontend (React.js)**: Located in the `frontend` folder.
-  - **components/**: Contains React components like `ManagerDashboard`, `TenantDashboard`, etc.
 
-## API Routes
-- **/api/tenants**
-  - `GET /api/tenants`: Fetch all tenants.
-  - `POST /api/tenants`: Add a new tenant.
-  - `DELETE /api/tenants/:id`: Delete a tenant by ID.
+```
+|-- backend/
+|   |-- routes/
+|   |   |-- tenants.js
+|   |   |-- maintenance.js
+|   |   |-- manager.js
+|   |-- server.js
+|   |-- init_db.js
+|-- frontend/
+|   |-- src/
+|   |   |-- components/
+|   |   |   |-- TenantDashboard.js
+|   |   |   |-- ManagerDashboard.js
+|-- database.db
+```
 
-- **/api/maintenance-requests**
-  - `GET /api/maintenance-requests`: Fetch all maintenance requests (Manager/Staff use).
-  - `GET /api/maintenance-requests/my`: Fetch maintenance requests for a specific tenant.
-  - `POST /api/maintenance-requests`: Add a new maintenance request (Tenant use).
-  - `PUT /api/maintenance-requests/:id`: Update a maintenance request's status, priority, or comment.
-  - `DELETE /api/maintenance-requests/:id`: Delete a maintenance request by ID.
+## Running the Application
 
-## Notes
-- **Database**: The project uses SQLite as a simple and lightweight database. The schema includes tables like `tenants` and `maintenance_requests` to manage the data efficiently.
-- **User Flow**: Managers and staff have different levels of access and privileges compared to tenants. Ensure that the role-based access and functionality are properly managed.
+1. Ensure that both the backend and frontend servers are running.
+2. Open your browser and navigate to `http://localhost:3000` to use the frontend.
+3. Use the manager dashboard to add tenants, or use the tenant dashboard to submit maintenance requests.
+
+## API Endpoints
+
+### Tenant Routes
+- **POST /api/tenants**: Add a new tenant.
+- **DELETE /api/tenants/:id**: Delete a tenant by their ID.
+- **GET /api/tenants**: Get a list of all tenants.
+
+### Maintenance Routes
+- **POST /api/maintenance-requests**: Add a new maintenance request (tenant use case).
+- **GET /api/maintenance-requests**: Get all maintenance requests (manager and staff use case).
+- **GET /api/maintenance-requests/my**: Get maintenance requests for a specific tenant.
+- **PUT /api/maintenance-requests/:id**: Update the status, priority, or comment of a maintenance request.
+- **DELETE /api/maintenance-requests/:id**: Delete a maintenance request.
 
 ## Troubleshooting
-- **CORS Issues**: Make sure CORS is correctly configured in `server.js` for local development by ensuring the frontend's origin is allowed.
-- **Port Conflicts**: Ensure no other services are using ports `3000` and `5001`.
-- **Database Issues**: If you encounter `database.db` missing or tables not found, run the `init_db.js` script again to reinitialize.
 
-## Contributing
-1. **Fork the Repository**.
-2. **Create a Feature Branch** (`git checkout -b feature/YourFeature`).
-3. **Commit Changes** (`git commit -m 'Add some feature'`).
-4. **Push to the Branch** (`git push origin feature/YourFeature`).
-5. **Open a Pull Request**.
+- **Cannot GET /api/...**: This often means there is a typo in the route name or the backend server is not running.
+- **CORS issues**: Ensure that the CORS configuration in `server.js` allows requests from `http://localhost:3000`.
+- **Database Errors**: Ensure the SQLite database is properly initialized by running `node init_db.js` before starting the server.
+
+## Known Issues
+
+- **Priority Setting Not Working**: Ensure that the PUT request payload contains the correct fields (`status`, `priority`, or `comment`).
+- **Photo Uploads**: Currently, only the photo name is being sent to the backend. To fully support photo uploads, implement an upload handler to save photos to the server.
+
+## Future Improvements
+- **Authentication**: Add user authentication to manage different roles like tenant, manager, and staff.
+- **Photo Upload Handling**: Integrate photo handling for maintenance requests so that users can upload photos for each request.
+- **Role-based Dashboards**: Expand functionalities for tenants, staff, and managers based on their roles.
 
 ## License
-This project is licensed under the MIT License. See the `LICENSE` file for more details.
+
+This project is open-source and available for modification and redistribution.
+
+## Contact
+
+For further queries, contact the repository owner or create an issue on GitHub.
+
+---
+
+Feel free to suggest any changes or improvements!
+
