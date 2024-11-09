@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta
+          name="description"
+          content="Maintenance Request System for Tenants, Staff, and Managers"
+  />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <title>Maintenance Request System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+<noscript>You need to enable JavaScript to run this app.</noscript>
+<div id="root">
+  <div class="login-container">
+    <h2>Login to Maintenance Request System</h2>
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required />
+      </div>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</div>
+<script>
+  document.getElementById('loginForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    // Simple client-side logic for demonstration purposes.
+    if (username && password) {
+      if (username.startsWith('tenant')) {
+        window.location.href = '/tenant-dashboard';
+      } else if (username.startsWith('staff')) {
+        window.location.href = '/staff-dashboard';
+      } else if (username.startsWith('manager')) {
+        window.location.href = '/manager-dashboard';
+      } else {
+        alert('Invalid credentials! Please try again.');
+      }
+    } else {
+      alert('Please enter both username and password.');
+    }
+  });
+</script>
+</body>
+</html>
